@@ -1,4 +1,4 @@
-uglifyjs jquery-ui-scrollable.js -o jquery-ui-scrollable.min.js
+uglifyjs jquery-ui-scrollable.js --comments -o jquery-ui-scrollable.min.js
 
 git add . && git commit -am "New Build"
 
