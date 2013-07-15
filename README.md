@@ -49,7 +49,7 @@ Any missing values will default to zero.  Positive value shrink the box while ne
       // Adjust the bounds of the left/right only (20% for each) and leave top/bottom alone
       $('#myelement').scrollable({ offset: { x: '40%' } });      
       
-See the [example](http://bseth99.github.io/jquery-ui-extensions/tests/visual/scrollable/offset.html) to see how it works.      
+See the [example](http://bseth99.github.io/jquery-ui-scrollable/examples/offset.html) to see how it works.      
 
 ### Methods
 
@@ -77,7 +77,7 @@ See the documentation on [jQuery UI Position](http://api.jqueryui.com/position/)
 - ````easing```` - Accepts all the easing options available in [jQuery UI](http://jqueryui.com/effect/#easing)
 - ````complete```` - callback function to execute once animation completes
 
-See the [example](http://bseth99.github.io/jquery-ui-extensions/tests/visual/scrollable/goto.html) to experiment
+See the [example](http://bseth99.github.io/jquery-ui-scrollable/examples/goto.html) to experiment
 with the positioning options.
 
 ### Events
