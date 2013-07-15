@@ -17,7 +17,7 @@ Check out some of the [demos](http://bseth99.github.io/jquery-ui-scrollable/inde
 
 Either download the
 [Minified](https://raw.github.com/bseth99/jquery-ui-scrollable/master/jquery-ui-scrollable.min.js) or the 
-[Full](https://raw.github.com/bseth99/jquery-ui-extensions/master/jquery-ui-scrollable.js) source and add it
+[Full](https://raw.github.com/bseth99/jquery-ui-scrollable/master/jquery-ui-scrollable.js) source and add it
 after the normal jQuery UI scripts.  
 
 A scrolling element is either the window or an element with the ````overflow```` style set to

@@ -1,4 +1,4 @@
-/*!
+/*@preserve
  * Copyright (c) 2013 Ben Olson (https://github.com/bseth99/jquery-ui-scrollable)
  * jQuery UI Scrollable 0.1.1
  *
