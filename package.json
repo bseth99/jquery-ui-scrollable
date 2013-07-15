@@ -1,0 +1,27 @@
+{
+   "name": "jquery-ui-scrollable",
+   "title": "jQuery UI Scrollable",
+   "description": "Enables monitoring, querying, or changing the scroll position of an element relative to a scrolling  container",
+   "version": "0.1.1",
+   "author": {
+      "name": "Ben Olson",
+      "url": "http://bseth99.github.com/"
+   },
+   "homepage": "https://github.com/bseth99/jquery-ui-scrollable",
+   "repository": {
+      "type": "git",
+      "url": "git://github.com/bseth99/jquery-ui-scrollable.git"
+   },
+   "bugs": {
+      "url" : "http://github.com/bseth99/jquery-ui-scrollable/issues"
+   },
+   "licenses": [
+      {
+         "type": "MIT",
+         "url": "https://github.com/bseth99/jquery-ui-scrollable/blob/master/MIT-LICENSE.txt"
+      }
+   ],
+   "dependencies": {},
+   "devDependencies": {},
+   "keywords": []
+}
