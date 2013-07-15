@@ -1,63 +1,324 @@
-<!doctype html>
-<html lang="en">
+<!Doctype html>
+<html>
 <head>
-   <meta charset="utf-8">
-   <title>jQuery UI Scrollable</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
-<style>
-body {
-   font-size: 90%;
-   font-family: sans-serif,arial;
-}
-li {
-   margin: 5px;
-}
-#main {
-   width: 600px;
-   margin: auto;
-}
-</style>
+  <title>jQuery UI Scrollable Widget</title>
 
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <script src="jquery-ui-scrollable.js"></script>
+
+  <style>
+      body {
+         font-family: sans-serif,arial;
+      }
+
+      pre {
+          background-color: #F8F8F8;
+          border: 1px solid #DDDDDD;
+          border-radius: 3px 3px 3px 3px;
+          font-size: 13px;
+          line-height: 19px;
+          overflow: auto;
+          padding: 6px 10px;
+      }
+
+      code {
+          white-space: nowrap;
+          background-color: #F8F8F8;
+          border: 1px solid #DDDDDD;
+          border-radius: 3px 3px 3px 3px;
+          margin: 0 2px;
+          padding: 0 5px;
+      }
+
+      pre > code {
+          background-color: transparent;
+          border: medium none;
+          margin: 0;
+          padding: 0;
+          white-space: pre;
+      }
+
+      .nav-bar {
+         border-right: 1px solid #efefef;
+         position: fixed;
+         top: 0;
+         left: 0;
+         bottom: 0;
+         width: 300px;
+         padding-top: 58px;
+      }
+
+      .nav-bar h3 {
+         cursor: pointer;
+         padding: 5px 25px 5px;
+         text-align: right;
+      }
+
+      .nav-bar .selected {
+         background-color: #d6ebff;
+      }
+
+      .content {
+         margin-left: 300px;
+      }
+
+      .content h1 {
+         margin-left: -8px;
+         margin-right: -8px;
+         padding: 10px;
+         background-color: #efefef;
+      }
+
+      .content div.section {
+         margin-bottom: 80px;
+      }
+
+      .title {
+         position: fixed;
+         text-align: right;
+         top: 300px;
+         left: 100px;
+      }
+  </style>
 </head>
 <body>
 
-<a href="https://github.com/bseth99/jquery-ui-scrollable"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/bseth99/jquery-ui-scrollable"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 1" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
 
-<div id="main">
-   <h1>jQuery UI Scrollable</h1>
+<h1 class="title">jQuery<br/> UI<br/> Scrollable</h1>
 
-   <p>
-   A jQuery UI widget that enables monitoring, querying, or changing the scroll position of an element relative to
-   a scrolling  container.  Read about the journey to get here on
-   my blog post - <a href="http://www.benknowscode.com/2013/07/detect-dom-element-scrolled-with-jquery.html">
-   benknowscode.com/2013/07/detect-dom-element-scrolled-with-jquery</a>
-   </p>
-
-   <ul>
-      <li><b>Detect</b>: Monitors whether target elements scroll in/out of the visible view of a scroll container (not just the window).
-         Allows configuring a logical size of the container to affect where the target must actually be located before triggering events.</li>
-      <li><b>Query</b>: Provides location information identifying where the target element is located relative to the container (top, left, bottom, right).</li>
-      <li><b>Change</b>: Enables animated scrolling of the target into the container with any of the built-in jQuery easing options and flexible
-         positioning settings.</li>
-   </ul>
-
-   <h2>Download</h2>
-
-   <p>
-   Either download the
-   <a href="https://raw.github.com/bseth99/jquery-ui-scrollable/master/jquery-ui-scrollable.min.js">Minified</a> or the
-   <a href="https://raw.github.com/bseth99/jquery-ui-scrollable/master/jquery-ui-scrollable.js">Full</a> source and add it
-   after the normal jQuery UI scripts.  See the <a href="https://github.com/bseth99/jquery-ui-scrollable">README</a> for more usage information.
-   </p>
-
-   <h2>Demos</h2>
-   <ul>
-      <li><a href="examples/event.html">Event with Multiple Containers</a></li>
-      <li><a href="examples/goto.html">Animated Scroll with Goto Method</a></li>
-      <li><a href="examples/offset.html">Adjust Viewport Size with Offset</a></li>
-   </ul>
+<div class="nav-bar">
 
 </div>
+
+<div class="content">
+   <h1>Overview</h1>
+   <div class="section">
+      A jQuery UI widget that enables monitoring, querying, or changing the scroll position of an element relative to
+      a scrolling  container.  Read about the journey to get here on
+      my blog post - <a href="http://www.benknowscode.com/2013/07/detect-dom-element-scrolled-with-jquery.html">
+      benknowscode.com/2013/07/detect-dom-element-scrolled-with-jquery</a>
+
+      <h2>Features</h2>
+
+      <ul>
+         <li><b>Detect</b>: Monitors whether target elements scroll in/out of the visible view of a scroll container (not just the window).
+            Allows configuring a logical size of the container to affect where the target must actually be located before triggering events.</li>
+         <li><b>Query</b>: Provides location information identifying where the target element is located relative to the container (top, left, bottom, right).</li>
+         <li><b>Change</b>: Enables animated scrolling of the target into the container with any of the built-in jQuery easing options and flexible
+            positioning settings.</li>
+      </ul>
+
+      <h2>Download</h2>
+
+      <div>
+         Either download the
+         <a href="https://raw.github.com/bseth99/jquery-ui-scrollable/master/jquery-ui-scrollable.min.js">Minified</a> or the
+         <a href="https://raw.github.com/bseth99/jquery-ui-scrollable/master/jquery-ui-scrollable.js">Full</a> source and add it
+         after the normal jQuery UI scripts.
+      </div>
+   </div>
+
+   <h1>Usage</h1>
+   <div class="section">
+
+      <p>A scrolling element is either the window or an element with the <code>overflow</code> style set to
+      <code>auto</code> or <code>scroll</code></p>
+
+      <pre><code>  $('#myelement').scrollable()
+      </code></pre>
+
+      <p>This will add myelement to the list of elements being monitored for their scroll position.  If the element scrolls into
+      the visible viewport defined by its container, then an <code>in</code> event is triggered.  When it scrolls out, an
+      <code>out</code> event is triggered.  Each event is triggered only one time when an element moves in and out of view.</p>
+
+      <h3>
+      <a href="#options" class="anchor" name="options"><span class="octicon octicon-link"></span></a>Options</h3>
+
+      <p><code>direction</code> - Determines if monitoring/positioning will occur for either <code>both</code>, <code>vertical</code> only, or
+      <code>horizontal</code> only.  Defaults to <code>both</code>.  </p>
+
+      <pre><code>  $('#myelement').scrollable({ direction: 'vertical' });
+      </code></pre>
+
+      <p><code>offset</code> - Adjust the logical size of the container such that the detection compares to a different
+      sized box than the physical one displayed in the browser.  Accepts pixels and percentages.  Accepts <code>left</code>,
+      <code>top</code>, <code>right</code>, and <code>bottom</code> to set each side individually or <code>vertical</code>/<code>y</code> and
+      <code>horizonal</code>/<code>x</code> which will split the value evenly between the top/bottom and left/right, respectively.
+      Any missing values will default to zero.  Positive value shrink the box while negative expand it.</p>
+
+      <pre><code>  // Adjust the bounds of the top/left side of the detection zone
+        $('#myelement').scrollable({ offset: { left: '40%', top: '40%' } });
+
+        // Adjust the bounds of the left/right only (20% for each) and leave top/bottom alone
+        $('#myelement').scrollable({ offset: { x: '40%' } });
+      </code></pre>
+
+      <p>See the <a href="http://bseth99.github.io/jquery-ui-scrollable/examples/offset.html">example</a> to see how it works.      </p>
+
+      <h3>
+      <a href="#methods" class="anchor" name="methods"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+      <p><code>position</code> - returns an object hash describing the state of the element relative to the scrolling container's
+      visible viewport:</p>
+
+      <ul>
+      <li>
+      <code>container</code> [Object] - The normalized (after applying <code>offset</code>) left/right/top/bottom points of
+      the container element.</li>
+      <li>
+      <code>element</code> [Object] - The left/right/top/bottom points of the target element.</li>
+      <li>
+      <code>inside</code> [Boolean] - Is the element inside the defined visible viewport.</li>
+      <li>
+      <code>outside</code> [Boolean] - Is the element outside the defined visible viewport.</li>
+      <li>
+      <code>left</code> [Boolean] - Is the element left of the defined visible viewport.</li>
+      <li>
+      <code>right</code> [Boolean] - Is the element right of the defined visible viewport.</li>
+      <li>
+      <code>top</code> [Boolean] - Is the element above the defined visible viewport.</li>
+      <li>
+      <code>bottom</code> [Boolean] - Is the element below the defined visible viewport.</li>
+      </ul><p><code>goto</code> - Scrolls the element into the visible viewport.  Uses jQuery.animate to smooth the transistion.
+      Takes an optional config object with the following options:</p>
+
+      <ul>
+      <li>
+      <code>onlyOutside</code> - Should the element be scrolled if its already in the visible area.</li>
+      <li>
+      <code>my</code> - Determines the final positioning of the target element relative to the container.</li>
+      <li>
+      <code>at</code> - Determines where the element should be positioned relative to the container.<br>
+      See the documentation on <a href="http://api.jqueryui.com/position/">jQuery UI Position</a> for the format of <code>my</code> and <code>at</code>.</li>
+      <li>
+      <code>duration</code> - Same options as <a href="http://api.jquery.com/animate/">jQuery.animate()</a>
+      </li>
+      <li>
+      <code>easing</code> - Accepts all the easing options available in <a href="http://jqueryui.com/effect/#easing">jQuery UI</a>
+      </li>
+      <li>
+      <code>complete</code> - callback function to execute once animation completes</li>
+      </ul><p>See the <a href="http://bseth99.github.io/jquery-ui-scrollable/examples/goto.html">example</a> to experiment
+      with the positioning options.</p>
+
+      <h3>
+      <a href="#events" class="anchor" name="events"><span class="octicon octicon-link"></span></a>Events</h3>
+
+      <p><code>in</code> - triggered when the element scrolls into the defined viewport.</p>
+
+      <pre><code>  $('#myelement').scrollable({
+           in: function ( e, ui ) {
+
+              ...
+
+           }
+        });
+      </code></pre>
+
+      <p>or </p>
+
+      <pre><code>  $('#myelement').on('scrollin', function ( e, ui ) {
+
+              ...
+
+        });
+      </code></pre>
+
+      <p><code>e</code> is the original scroll event.</p>
+
+      <p>The <code>ui</code> object contains the following keys:</p>
+
+      <ul>
+      <li>
+      <code>container</code> [jQuery] - The closest scrolling ancestor container of the target element</li>
+      <li>
+      <code>element</code> [jQuery] - The target element</li>
+      <li>
+      <code>position</code> [Object] - The same object hash that is returned by the <code>position</code> method.</li>
+      </ul><p><code>out</code> - triggered when the element scrolls out of the defined viewport.  Same parameters and usage as <code>in</code>.</p>
+
+
+   </div>
+
+   <h1>Demos</h1>
+   <div class="section">
+      This page serves as one of the demos.  The navigation bar on the left will track along as you scroll
+      down this page.  Each topic has a header which are being tracked by Scrollable.  As they enter the bottom of the
+      window, the <code>in</code> event fires which handles updating the navigation bar. Click each section on the
+      navigation menu on the left will animate the section into view using the <code>goto</code> method.
+
+      <ul>
+         <li><a href="examples/event.html">Event with Multiple Containers</a></li>
+         <li><a href="examples/goto.html">Animated Scroll with Goto Method</a></li>
+         <li><a href="examples/offset.html">Adjust Viewport Size with Offset</a></li>
+         <li><a href="examples/slideshow.html">Create a Simple Image Slideshow</a></li>
+      </ul>
+   </div>
+
+
+</div>
+
+<script>
+
+$(function() {
+
+   var $nav = $( '.nav-bar' ),
+       $ps = $( '.content > .section' ),
+       $hs = $( '.content > h1' );
+
+   $.osb.scrollable.CONFIG.throttler = 0;
+
+   $(window).on('resize', function() {
+
+      var wh = $(window).height();
+
+      $hs.each( function(i) {
+         var $pi = $ps.eq( i ),
+             ph = $pi.height();
+
+         if ( ph < wh )
+            $pi.css( 'margin-bottom', wh - ph );
+      });
+
+   }).trigger('resize');
+
+   $hs.each( function(i) {
+
+            $('<h3>')
+               .text( $(this).text() )
+               .appendTo( $nav )
+               .click( function() {
+
+                     $hs.eq( $(this).index() ).scrollable( 'goto', {
+                           my: 'top',
+                           at: 'top'
+                        } );
+
+                  });
+
+         })
+
+      .scrollable({
+            direction: 'vertical',
+            offset: { bottom: '50%' },
+            in: function ( e, ui ) {
+
+               $nav.children()
+                  .removeClass( 'selected' )
+                  .eq( ui.element.index( '.content > h1' ) )
+                  .addClass( 'selected' );
+            }
+         });
+
+
+});
+</script>
 
 </body>
 </html>

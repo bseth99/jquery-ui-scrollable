@@ -1,0 +1,139 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+  <title>Scrollable: Image Slideshow</title>
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <script src="../jquery-ui-scrollable.js"></script>
+
+  <style>
+     body {
+        font-family: sans-serif,arial;
+     }
+
+     .main {
+        width: 800px;
+        margin: auto;
+     }
+  </style>
+</head>
+<body>
+
+<style>
+
+.ss-container {
+   width: 640px;
+   height: 400px;
+   overflow: hidden;
+   margin: 80px;
+}
+
+.ss-scroller {
+   overflow-y: hidden;
+   overflow-x: scroll;
+}
+
+.ss-images {
+   position: relative;
+   width: 10000px;
+}
+
+.ss-item {
+   background-color: #FFF2D9;
+   vertical-align: middle;
+}
+</style>
+
+<a href="https://github.com/bseth99/jquery-ui-scrollable"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+<div class="main">
+
+   <div>
+      <div>
+         <a href="../index.html">&lt; Back to widget demos</a>
+      </div>
+      <br/>
+
+      Load all the pictures into one DIV and attach a Scrollable to each image.  Setup a timer
+      to animate each into view.  Here's the Flickr public feed tagged with "ocean" and "sunset":
+   </div>
+
+   <div class="ss-container">
+      <div class="ss-scroller">
+         <div class="ss-images">
+
+         </div>
+      </div>
+   </div>
+
+</div>
+
+<script>
+
+$(function() {
+   var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+   var loaded = 0, totalSlides = 5;
+
+   $('.ss-container').css('visibility', 'hidden');
+
+   $.getJSON( flickerAPI, {
+         tags: "ocean sunset",
+         tagmode: "all",
+         format: "json"
+      })
+   .done(function( data ) {
+
+      var maxH = 0;
+
+      $.each( data.items.slice(0, totalSlides), function( i, item ) {
+
+          $('<img/>')
+            .addClass('ss-item')
+            .attr('src', item.media.m.replace('_m.', '_z.'))
+            .appendTo('.ss-images')
+            .one('load', function () {
+                  var $i = $(this), $c,
+                      w = $('.ss-container').width()-$i.width(),
+                      h = $i.height();
+
+                  maxH = maxH < h ? h : maxH;
+
+                  $i.css({
+                     paddingLeft: Math.round(w/2)+'px',
+                     paddingRight: Math.round(w/2)+'px'
+                  });
+
+                  loaded++;
+                  if ( loaded == totalSlides ) {
+                     $('.ss-images').css('top', (($('.ss-container').height()-maxH)/2)+'px');
+                     $('.ss-item').scrollable({ direction: 'horizontal' });
+                     $('.ss-container').css('visibility', 'visible');
+                     runSlideShow();
+                  }
+               });
+
+      });
+   });
+
+   var curSlide = 0;
+   function runSlideShow() {
+
+      if ( curSlide == totalSlides )
+         curSlide = 0;
+
+      $('.ss-item').eq(curSlide).scrollable('goto');
+      curSlide++;
+
+      setTimeout(runSlideShow, 3000);
+   }
+
+});
+</script>
+
+</body>
+</html>
