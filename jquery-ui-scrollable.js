@@ -83,7 +83,7 @@
 
                   _waiter = null;
 
-               }, 300);
+               }, $.osb.scrollable.CONFIG.throttler);
             }
 
          }
@@ -475,5 +475,9 @@
          }
       }
    };
+
+   $.osb.scrollable.CONFIG = {
+      throttler: 300
+   }
 
 })(jQuery);
