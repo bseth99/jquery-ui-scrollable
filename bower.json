@@ -1,0 +1,13 @@
+{
+  "name": "jquery-ui-scrollable",
+  "version": "0.1.1",
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "examples"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "jquery-ui": "latest"
+  }
+}
