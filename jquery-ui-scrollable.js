@@ -181,7 +181,7 @@
          }
 
          this.container = this.element.closest(':scrollable'+( this.direction == 'both' ? '' : '('+this.direction+')'));
-         if ( rootex.test(this.container[0].nodeName) ) this.container = $(window);
+         if ( this.container.length == 0 || rootex.test(this.container[0].nodeName) ) this.container = $(window);
          monitor.attach( this );
 
          this._checkPositioning();
@@ -216,7 +216,7 @@
                   top: this.container.scrollTop(),
                   left: this.container.scrollLeft()
                },
-             elem = this.element.position(),
+             elem = this.element.offset(),
              ofs = $.extend({}, this.options.offset),
              width = this.container.width(),
              height = this.container.height(),
