@@ -216,7 +216,7 @@
                   top: this.container.scrollTop(),
                   left: this.container.scrollLeft()
                },
-             elem = this.element.offset(),
+             elem = this.element.position(),
              ofs = $.extend({}, this.options.offset),
              width = this.container.width(),
              height = this.container.height(),
