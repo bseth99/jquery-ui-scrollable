@@ -88,7 +88,8 @@
 
          }
 
-      scroller.element.on('scroll', scroller.onscroll);
+      //console.log( 'Start listening to scrolling' );
+      scroller.element.on('scroll.scrollable', scroller.onscroll);
    }
 
    var monitor = {
@@ -116,9 +117,12 @@
          if ( !( scroller = this.getScroller( scroll.container ) ) ) {
             scroller = { element: scroll.container, watch: [], onscroll: null };
             this.scrollers.push( scroller );
-            trackScrolling( scroller );
          }
 
+         if ( scroller.watch.length == 0 )
+            trackScrolling( scroller );
+
+         //console.log( 'Watch', scroll );
          scroller.watch.push( scroll );
 
       },
@@ -138,7 +142,8 @@
             }
 
             if ( scroller.watch.length == 0 ) {
-               scroller.element.off( 'scroll', scroller.onscroll );
+               //console.log( 'Stop listening to scrolling' );
+               scroller.element.off( 'scroll.scrollable' );
             }
 
          }
@@ -154,9 +159,11 @@
       }
    }
 
+window.Scrollable = monitor;
+
    $.widget('osb.scrollable', {
 
-      version: "0.1.1",
+      version: "0.1.3",
 
       widgetEventPrefix: 'scroll',
 
@@ -260,6 +267,8 @@
 
          ret.inside = !ret.left && !ret.right && !ret.top && !ret.bottom;
          ret.outside = !ret.inside;
+
+         //console.log( ret );
 
          return ret;
       },
