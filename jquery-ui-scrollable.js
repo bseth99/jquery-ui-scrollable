@@ -163,7 +163,7 @@ window.Scrollable = monitor;
 
    $.widget('osb.scrollable', {
 
-      version: "0.1.3",
+      version: "0.1.4",
 
       widgetEventPrefix: 'scroll',
 
