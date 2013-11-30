@@ -1,0 +1,88 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <title>Scrollable: Dynamic Menus</title>
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <script src="../jquery-ui-scrollable.js"></script>
+
+
+</head>
+<body>
+
+<div class="menu">
+
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <ul class="nav navbar-nav nav-main">
+         <li class="active"><a href="#">Item 1</a></li>
+         <li><a href="#">Item 2</a></li>
+         <li><a href="#">Item 3</a></li>
+      </ul>
+   </nav>
+
+   <nav class="navbar navbar-default navbar-static-top" style="margin-top: 50px; ">
+      <div class="navbar-form navbar-left nav-search" style="top: 0; width: 50%; z-index: 2000;">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+   </nav>
+
+</div>
+
+<a href="https://github.com/bseth99/jquery-ui-scrollable"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 2000;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+<div style="position: fixed; right: 150px; top: 150px; width: 500px; margin: 10px; ">
+
+   <div>
+      <a href="../index.html">&lt; Back to widget demos</a>
+   </div>
+   <br/>
+
+   The demo illustrates how to use the Scrollable widget to create a dynamic menu that folds up/down as the page is
+   scrolled.  The content is setup in a way that the submenu slides behind the main menu and, once out of view, its
+   contents become visible in the main menu bar.  The solution does require calculating all the fixed positions
+   of the menu items since they are not moved from their original parent.
+</div>
+
+<div style="height: 2000px;">
+</div>
+
+<script>
+$(function () {
+   $search = $( '.nav-search' );
+
+   $('.menu')
+      .on('scrollin', function ( e, ui) {
+
+            $search.css({
+                position: 'absolute',
+                left: '0',
+                width: '50%'
+            }).parent().css( 'position', 'relative' );
+
+         })
+      .on('scrollout', function ( e, ui) {
+
+            $search.css({
+                position: 'fixed',
+                left: '230px',
+                width: '30%'
+            }).parent().css(  'position', 'static' );
+
+         })
+      .scrollable({ offset: { top: 50 } });
+
+});
+</script>
+
+</body>
+</html>
