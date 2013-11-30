@@ -174,7 +174,7 @@ window.Scrollable = monitor;
          offset: null
       },
 
-      inView: false,
+      inView: true,
 
       _create: function () {
 
