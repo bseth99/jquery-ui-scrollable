@@ -65,28 +65,49 @@
    * End jQuery UI Position
    **/
 
+   /**
+   * throttle from:
+   * http://remysharp.com/2010/07/21/throttling-function-calls/
+   */
+   function throttle(fn, threshhold, scope) {
+     threshhold || (threshhold = 250);
+     var last,
+         deferTimer;
+     return function () {
+       var context = scope || this;
+
+       var now = +new Date,
+           args = arguments;
+       if (last && now < last + threshhold) {
+         // hold on to it
+         clearTimeout(deferTimer);
+         deferTimer = setTimeout(function () {
+           last = now;
+           fn.apply(context, args);
+         }, threshhold);
+       } else {
+         last = now;
+         fn.apply(context, args);
+       }
+     };
+   }
+
    function trackScrolling( scroller ) {
 
       var _waiter = null;
 
-      scroller.onscroll = function ( e ) {
+      scroller.onscroll = throttle( function ( e ) {
 
-            if ( !_waiter && !scroller.ignoreScrolling ) {
+            if ( !scroller.ignoreScrolling ) {
 
-               _waiter = setTimeout(function () {
+               $.each(scroller.watch, function () {
 
-                  $.each(scroller.watch, function () {
+                  this._checkPositioning( e );
 
-                     this._checkPositioning( e );
-
-                  });
-
-                  _waiter = null;
-
-               }, $.osb.scrollable.CONFIG.throttler);
+               });
             }
 
-         }
+         }, $.osb.scrollable.CONFIG.throttler );
 
       //console.log( 'Start listening to scrolling' );
       scroller.element.on('scroll.scrollable', scroller.onscroll);
@@ -163,7 +184,7 @@ window.Scrollable = monitor;
 
    $.widget('osb.scrollable', {
 
-      version: "0.1.4",
+      version: "0.1.5",
 
       widgetEventPrefix: 'scroll',
 

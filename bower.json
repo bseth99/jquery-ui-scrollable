@@ -1,6 +1,6 @@
 {
   "name": "jquery-ui-scrollable",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "ignore": [
     "bower_components",
     "node_modules",

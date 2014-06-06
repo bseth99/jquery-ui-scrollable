@@ -2,7 +2,7 @@
    "name": "jquery-ui-scrollable",
    "title": "jQuery UI Scrollable",
    "description": "Enables monitoring, querying, or changing the scroll position of an element relative to a scrolling  container",
-   "version": "0.1.4",
+   "version": "0.1.5",
    "author": {
       "name": "Ben Olson",
       "url": "http://bseth99.github.com/"
